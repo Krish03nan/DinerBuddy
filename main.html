@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligent Diner | AI Concierge</title>
+    
+    <link rel="preload" href="https://orgfarm-376cd6ef7c.my.site.com/ESWDinerSupportAgent1771388674049/assets/styles/salesforce-lightning-design-system.min.css?c85f7710f7" as="style">
+    <link rel="preload" href="https://orgfarm-376cd6ef7c.my.site.com/ESWDinerSupportAgent1771388674049/assets/styles/embedded-messaging-styling.min.css?c85f7710f7" as="style">
+    
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f7f2; /* Warm, dining-inspired neutral */
+            background-color: #f9f7f2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -66,7 +70,23 @@
                 console.error('Error loading Embedded Messaging: ', err);
             }
         };
+
+        // Trigger initialization as soon as the bootstrap script loads
+        function handleBootstrapLoad() {
+            if (window.embeddedservice_bootstrap) {
+                initEmbeddedMessaging();
+            } else {
+                console.error('Salesforce Bootstrap failed to load.');
+            }
+        }
     </script>
-    <script type='text/javascript' src='https://orgfarm-376cd6ef7c.my.site.com/ESWDinerSupportAgent1771388674049/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-    </body>
+
+    <script 
+        type='text/javascript' 
+        src='https://orgfarm-376cd6ef7c.my.site.com/ESWDinerSupportAgent1771388674049/assets/js/bootstrap.min.js' 
+        async 
+        onload='handleBootstrapLoad()'>
+    </script>
+
+</body>
 </html>
